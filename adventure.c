@@ -104,6 +104,8 @@ int HasBlueKeyTwo = 0; //Blue key two flag
 int GameOver = 0;
 
 void MazeStructure(){
+
+	attron(COLOR_PAIR(WALL_PAIR));
 	//Maze
 	mvhline(8, 72, WALL, 7); //1
 	mvvline(8, 72, WALL, 10); //2
@@ -114,7 +116,7 @@ void MazeStructure(){
 	mvhline(17, 10, WALL, 53); //7
 	mvhline(14, 32, WALL, 30); //8
 	mvhline(11, 20, WALL, 43); //9
-	mvvline(17, 30, WALL, 3); //10
+	//Line 10 excluded due to clash in lvl 4
 	mvvline(4, 62, WALL, 7); //11
 	mvvline(6, 10, WALL, 11); //12
 	mvhline(6, 20, WALL, 22); //15
@@ -124,6 +126,8 @@ void MazeStructure(){
 	mvvline(4, 56, WALL, 8); //19
 	mvhline(8, 56, WALL, 7); //20
 	mvhline(4, 50, WALL, 6); //21
+
+	attroff(COLOR_PAIR(WALL_PAIR));
 }
 
 void Level_1(){
@@ -190,6 +194,8 @@ void Level_2(){
 	mvvline(1, 79, WALL, 8);
 	mvvline(12, 79, WALL, 8);
 
+	MazeStructure();
+	/*
 	//Maze
 	mvhline(8, 72, WALL, 7); //1
 	mvvline(8, 72, WALL, 10); //2
@@ -210,7 +216,8 @@ void Level_2(){
 	mvvline(4, 56, WALL, 8); //19
 	mvhline(8, 56, WALL, 7); //20
 	mvhline(4, 50, WALL, 6); //21
-	
+	*/
+	mvvline(17, 30, WALL, 3); //10 
 	attroff(COLOR_PAIR(WALL_PAIR));
 
 	//Print Red key
@@ -251,8 +258,13 @@ void Level_3(){
 	mvvline(1, 79, WALL, 20);
 	
 	//Maze
+	MazeStructure();
 	mvvline(8, 30, WALL, 8);
+	mvvline(17, 30, WALL, 3); //10 
+	mvhline(5,72, WALL, 7); //Line forming box fromm line 4
 
+	attroff(COLOR_PAIR(WALL_PAIR)); //Stop wall colour
+/*
 	//Maze
 	mvhline(8, 72, WALL, 7); //1
 	mvvline(8, 72, WALL, 10); //2
@@ -273,10 +285,8 @@ void Level_3(){
 	mvvline(4, 56, WALL, 8); //19
 	mvhline(8, 56, WALL, 7); //20
 	mvhline(4, 50, WALL, 6); //21
+*/
 
-	mvhline(5,72, WALL, 7); //Line forming box fromm line 4
-
-	attroff(COLOR_PAIR(WALL_PAIR)); //Stop wall colour
 
 	//Print Green key
 	if (HasGreenKey == 0){
@@ -304,6 +314,8 @@ void Level_4(){
 	mvvline(1, 79, WALL, 20);
 	
 	//Maze
+	MazeStructure();
+	/*
 	mvhline(8, 72, WALL, 7); //1
 	mvvline(8, 72, WALL, 10); //2
 	mvvline(6, 68, WALL, 12); //3
@@ -313,7 +325,6 @@ void Level_4(){
 	mvhline(17, 10, WALL, 53); //7
 	mvhline(14, 32, WALL, 30); //8
 	mvhline(11, 20, WALL, 43); //9
-	mvvline(17, 43, WALL, 3); //10
 	mvvline(4, 62, WALL, 7); //11
 	mvvline(6, 10, WALL, 11); //12
 	mvhline(6, 20, WALL, 22); //15
@@ -323,7 +334,8 @@ void Level_4(){
 	mvvline(4, 56, WALL, 8); //19
 	mvhline(8, 56, WALL, 7); //20
 	mvhline(4, 50, WALL, 6); //21
-
+	*/
+	mvvline(17, 43, WALL, 3); //10 --Special line
 	attroff(COLOR_PAIR(WALL_PAIR));
 
 	//Print blue key one
@@ -351,7 +363,12 @@ void Level_5(){
 	//Right Wall
 	mvvline(1, 79, WALL, 20);
 
+
 	//Maze
+	MazeStructure();
+	mvvline(17, 30, WALL, 3); //10 
+
+	/*
 	mvhline(8, 72, WALL, 7); //1
 	mvvline(8, 72, WALL, 10); //2
 	mvvline(6, 68, WALL, 12); //3
@@ -371,7 +388,9 @@ void Level_5(){
 	mvvline(4, 56, WALL, 8); //19
 	mvhline(8, 56, WALL, 7); //20
 	mvhline(4, 50, WALL, 6); //21
+*/
 	
+
 	attroff(COLOR_PAIR(WALL_PAIR));
 
 	//Print blue key two
