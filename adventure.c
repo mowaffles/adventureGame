@@ -7,14 +7,12 @@ Or Size terminal to 82x21 or greater and then run program
 
 Instructions:
 		You have been trapped in a mysterious dungeon by an evil wizard,
-		But he has accidentaly left the keys required to escape somewhere in the dungeon.
+		But he has accidentaly left the keys to escape in the dungeon.
 		Find your way through the mazes and secret passageways to collect all the keys and escape.
 
 	The purpose of the game is to gather each key in order to unlock it's corresponding gate.
-
 	The blue gate requires two seperate keys from rooms 4 and 5 to open completely
 
-	
 	Level Layout:
 
 	|---|				|---|
@@ -31,7 +29,8 @@ Instructions:
 			  | 6 |
 			  |---|
 
-	Secret Teleporting locations(@ symbol):
+
+	Secret Passageway locations(@ symbol):
 
 	Level 2 - Green Gate Room:
 
@@ -105,8 +104,8 @@ int CharacterX = 40; //Current character X postition
 int Current_Level = 0; //The level the player is currently on
 int HasRedKey = 0; //Red key flag
 int HasGreenKey = 0; //Green key flag
-int HasBlueKeyOne = 0; //Blue key one flag
-int HasBlueKeyTwo = 0; //Blue key two flag
+int HasBlueKeyOne = 1; //Blue key one flag
+int HasBlueKeyTwo = 1; //Blue key two flag
 int GameOver = 0;
 
 void MazeStructure(){
@@ -326,8 +325,12 @@ void Level_5(){
 
 void Level_6(){
 	//you win
-	mvaddstr(10,38, "WINNER");
+	mvaddstr(7,38, "WINNER");
 	refresh();
+	sleep(2);
+	mvaddstr(13,30, "THANK YOU FOR PLAYING");
+	refresh();
+	GameOver = 1; //End game
 }
 
 void Level_Selector(int side){
@@ -408,7 +411,6 @@ void Level_Selector(int side){
 
 	if (Current_Level == 1) {
 		if (side == 3){
-			GameOver = 1;
 			erase();
 			Level_6();
 			CharacterY = 10;
