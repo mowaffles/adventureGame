@@ -104,8 +104,8 @@ int CharacterX = 40; //Current character X postition
 int Current_Level = 0; //The level the player is currently on
 int HasRedKey = 0; //Red key flag
 int HasGreenKey = 0; //Green key flag
-int HasBlueKeyOne = 1; //Blue key one flag
-int HasBlueKeyTwo = 1; //Blue key two flag
+int HasBlueKeyOne = 0; //Blue key one flag
+int HasBlueKeyTwo = 0; //Blue key two flag
 int GameOver = 0;
 
 void MazeStructure(){
@@ -493,9 +493,8 @@ int main(){
 	noecho();
 	keypad(stdscr, TRUE);	//Allows keypad presses to be detected
 
-	Level_Selector(0);
+	Level_Selector(); //Start Level 1
 
-	
 	start_color(); //Initialise All colour stuff
 	init_pair(PLAYER_PAIR, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(WALL_PAIR, COLOR_WHITE, COLOR_BLACK);
