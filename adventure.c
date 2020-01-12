@@ -1,9 +1,15 @@
-//Compile with gcc -o game adventure.c -lncurses
-//Require ncurses library, install with sudo apt-get install libncurses5-dev libncursesw5-dev
-
-
 /*
+Requires ncurses library, install with: sudo apt-get install libncurses5-dev libncursesw5-dev
+
+Compile with: gcc -o game.out adventure.c -lncurses
+Run with: gnome-terminal --geometry=82x21 -e ./game.out
+Or Size terminal to 82x21 or greater and then run program
+
 Instructions:
+		You have been trapped in a mysterious dungeon by an evil wizard,
+		But he has accidentaly left the keys required to escape somewhere in the dungeon.
+		Find your way through the mazes and secret passageways to collect all the keys and escape.
+
 	The purpose of the game is to gather each key in order to unlock it's corresponding gate.
 
 	The blue gate requires two seperate keys from rooms 4 and 5 to open completely
