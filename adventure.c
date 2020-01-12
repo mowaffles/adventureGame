@@ -434,29 +434,33 @@ void Boundary_Checker(){
 	//SPECIAL DETECTIONS:
 	
 	//Level 2 Red Key Room:
-	if ((Current_Level == 2) && (CharacterY == 5) && (CharacterX == 55)){ //Outside -> Red Room
-		CharacterX = 57;
-		CharacterY = 10;
-	}
-	if ((Current_Level == 2) && (CharacterY == 9) && (CharacterX == 57)){ //Red Room -> Outside
-		CharacterX = 54;
-		CharacterY = 5;
-	}
-	if ((Current_Level == 2) && (CharacterY == 10) && (CharacterX == 61)){ //If user is on red key coords
-		HasRedKey = 1;
+	if(Current_Level == 2){
+		if ((CharacterY == 5) && (CharacterX == 55)){ //Outside -> Red Room
+			CharacterX = 57;
+			CharacterY = 10;
+		}
+		if ((CharacterY == 9) && (CharacterX == 57)){ //Red Room -> Outside
+			CharacterX = 54;
+			CharacterY = 5;
+		}
+		if ((CharacterY == 10) && (CharacterX == 61)){ //If user is on red key coords
+			HasRedKey = 1;
+		}
 	}
 
 	//Level 3 Green Key Room:
-	if ((Current_Level == 3) && (CharacterY == 18) && (CharacterX == 31)){ //Outside -> Red Room
-		CharacterX = 73;
-		CharacterY = 4;
-	}
-	if ((Current_Level == 3) && (CharacterY == 2) && (CharacterX == 73)){ //Red Room -> Outside
-		CharacterX = 31;
-		CharacterY = 19;
-	}
-	if ((Current_Level == 3) && (CharacterY == 4) && (CharacterX == 78)){ //If user is on green key coords
-		HasGreenKey = 1;
+	if(Current_Level == 3){
+		if ((CharacterY == 18) && (CharacterX == 31)){ //Outside -> Red Room
+			CharacterX = 73;
+			CharacterY = 4;
+		}
+		if ((CharacterY == 2) && (CharacterX == 73)){ //Red Room -> Outside
+			CharacterX = 31;
+			CharacterY = 19;
+		}
+		if ((CharacterY == 4) && (CharacterX == 78)){ //If user is on green key coords
+			HasGreenKey = 1;
+		}
 	}
 
 	//Level 4 Blue Key One Detection
