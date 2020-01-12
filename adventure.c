@@ -476,13 +476,11 @@ void Boundary_Checker(){
 	}
 }
 
-int move_okay(int y, int x){ //Using code from here: https://www.zcfy.cc/article/creating-an-adventure-game-in-the-terminal-with-ncurses
+int move_okay(int y, int x){
     int testch;
 
-    //return true if the space is okay to move into
-
-    testch = mvinch(y, x);
-    return (((testch & A_CHARTEXT) == Key) || ((testch & A_CHARTEXT) == EMPTY));
+    testch = mvinch(y, x); //Returns character at specified position
+    return (((testch & A_CHARTEXT) == Key) || ((testch & A_CHARTEXT) == EMPTY)); //Returns true if it is possible to move into space, false if cannot move
 }
 
 int main(){
@@ -519,25 +517,25 @@ int main(){
 		
 		switch(ch){
 		case KEY_UP:
-			if ((CharacterY>0) && (move_okay(CharacterY-1, CharacterX))){
+			if ((CharacterY>0) && (move_okay(CharacterY-1, CharacterX))){ //If y>0 true and move_okay returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterY = CharacterY -1;
 			}
 			break;
 		case KEY_DOWN:
-			if ((CharacterY<LINES-1) && (move_okay(CharacterY+1,CharacterX))){
+			if ((CharacterY<LINES-1) && (move_okay(CharacterY+1,CharacterX))){ //If y<lines-1 == true and move_okay returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterY = CharacterY + 1;
 			}
 			break;
 		case KEY_RIGHT:
-			if ((CharacterX<COLS-1) && (move_okay(CharacterY,CharacterX+1))){
+			if ((CharacterX<COLS-1) && (move_okay(CharacterY,CharacterX+1))){ //If x<cols-1 == true and move_okay returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterX = CharacterX + 1;
 			}
 			break;
 		case KEY_LEFT:
-			if ((CharacterX>0) && (move_okay(CharacterY, CharacterX-1))){
+			if ((CharacterX>0) && (move_okay(CharacterY, CharacterX-1))){ //If x>0 == true and move_okay returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterX = CharacterX - 1;
 			}
