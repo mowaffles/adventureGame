@@ -493,7 +493,7 @@ int main(){
 	noecho();
 	keypad(stdscr, TRUE);	//Allows keypad presses to be detected
 
-	Level_Selector(); //Start Level 1
+	Level_Selector(0); //Start Level 1
 
 	start_color(); //Initialise All colour stuff
 	init_pair(PLAYER_PAIR, COLOR_YELLOW, COLOR_BLACK);
