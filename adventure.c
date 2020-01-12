@@ -26,7 +26,7 @@ Instructions:
 				|
 				|
 			  |---|
-			  | 6 |
+			  | 6 | <- Not real room, just end screen
 			  |---|
 
 
