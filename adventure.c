@@ -476,22 +476,21 @@ void Boundary_Checker(){
 	}
 }
 
-int move_okay(int y, int x){
-    int testch;
-
-    testch = mvinch(y, x); //Returns character at specified position
-    return (((testch & A_CHARTEXT) == Key) || ((testch & A_CHARTEXT) == EMPTY)); //Returns true if it is possible to move into space, false if cannot move
+int move_Checker(int y, int x){ //Using code from: https://www.zcfy.cc/article/creating-an-adventure-game-in-the-terminal-with-ncurses
+    int spacetest;
+    spacetest = mvinch(y, x); //Returns character at specified position
+    return (((spacetest & A_CHARTEXT) == Key) || ((spacetest & A_CHARTEXT) == EMPTY)); //Returns true if it is possible to move into space, false if cannot move
 }
 
 int main(){
 	printf("\\");
 	int ch;
 	
-	initscr();			/* Start curses mode 		  */
+	initscr(); //Start curses mode
 
 	cbreak();
 	noecho();
-	keypad(stdscr, TRUE);	//Allows keypad presses to be detected
+	keypad(stdscr, TRUE); //Allows keypad presses to be detected
 
 	Level_Selector(0); //Start Level 1
 
@@ -510,31 +509,31 @@ int main(){
 		mvaddch(CharacterY,CharacterX,PLAYER);
 		attroff(COLOR_PAIR(PLAYER_PAIR));
 		move(CharacterY, CharacterX);
-		refresh();			/* Print it on to the real screen */
+		refresh(); //refresh screen
 		
-		ch = getch();			/* Wait for user input */
+		ch = getch(); //Get user's input
 		
 		switch(ch){
 		case KEY_UP:
-			if ((CharacterY>0) && (move_okay(CharacterY-1, CharacterX))){ //If y>0 true and move_okay returns true
+			if ((CharacterY>0) && (move_Checker(CharacterY-1, CharacterX))){ //If y>0 true and move_Checker returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterY = CharacterY -1;
 			}
 			break;
 		case KEY_DOWN:
-			if ((CharacterY<LINES-1) && (move_okay(CharacterY+1,CharacterX))){ //If y<lines-1 == true and move_okay returns true
+			if ((CharacterY<LINES-1) && (move_Checker(CharacterY+1,CharacterX))){ //If y<lines-1 == true and move_Checker returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterY = CharacterY + 1;
 			}
 			break;
 		case KEY_RIGHT:
-			if ((CharacterX<COLS-1) && (move_okay(CharacterY,CharacterX+1))){ //If x<cols-1 == true and move_okay returns true
+			if ((CharacterX<COLS-1) && (move_Checker(CharacterY,CharacterX+1))){ //If x<cols-1 == true and move_Checker returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterX = CharacterX + 1;
 			}
 			break;
 		case KEY_LEFT:
-			if ((CharacterX>0) && (move_okay(CharacterY, CharacterX-1))){ //If x>0 == true and move_okay returns true
+			if ((CharacterX>0) && (move_Checker(CharacterY, CharacterX-1))){ //If x>0 == true and move_Checker returns true
 				mvaddch(CharacterY, CharacterX, EMPTY); //Makes old position empty space
 				CharacterX = CharacterX - 1;
 			}
